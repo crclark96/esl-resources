@@ -15,8 +15,9 @@ function createDropdown(dropdown, val) {
   console.log(dropdown);
   console.log(val);
   $("#" + dropdown).append(format('<option value="{0}">{0}</option>',[val]));
-  $("#" + dropdown).children().last().click(function() {
+  $("#" + dropdown).change(function() {
     $(".collapsible").remove();
+    $(".content").remove();
     rel_entries = entries.filter(function(entry){
       return (entry[5] === $("#township").val()
               && entry[0] === $("#category").val());
@@ -24,7 +25,7 @@ function createDropdown(dropdown, val) {
     rel_entries.forEach(function(entry){
       $("body").append(format(collapsible,entry))
     });
-    $(".collapsible").click(function() {
+    $(".collapsible").on('click touchstart', function() {
       this.classList.toggle("active");
       var content = this.nextElementSibling;
       if (content.style.display === "block") {
