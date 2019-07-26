@@ -54,9 +54,9 @@ blockspring.runParsed("read-worksheet-google-sheets", { "file_id": "1ekPrJc7Z9xo
   for (var i = 1; i < res.params.data.length; i++) {
     var data = res.params.data[i];
     var content = [data[0], data[1],
-                   (data[2] === "Sp" ? "🇲🇽" : "🇺🇸"),
+                   (data[2] === "Sp" ? "sp" : "en"),
                    (data[3] === "Yes" ? "🛂" : "✔"),
-                   (data[4] === "Free" ? "" : "💵"),
+                   (data[4] === "Free" ? "free" : "💵"),
                    data[5], data[6], data[7], data[8], data[9], data[10], data[11]]
     townships.add(data[5]);
     categories.add(data[0]);
