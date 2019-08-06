@@ -17,10 +17,12 @@ function categoriesScreen() {
   }
   $(".categoryButton").on('click', function() {
     var category = this.innerText;
-    $(".categoryButton").remove();
+    $(".categoryButton").remove()
     $("body").append(backButton);
     $(".backButton").on('click', function(){
-      $("body").children().remove();
+      $(".collapsible").remove();
+      $(".content").remove();
+      $(".backButton").remove();
       categoriesScreen();
     });
     rel_entries = entries.filter(function(entry){
