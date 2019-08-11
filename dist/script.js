@@ -5,6 +5,12 @@ var categories = new Set();
 var url = "https://docs.google.com/spreadsheets/d/1sPTrQGlMw7bZeuOxK9WZWazfpi-IYKFqSN-62wga3ww/edit?usp=sharing";
 
 function format(source, params) {
+  /*
+  source: String
+  params: Array
+  replaces format strings in source with elements from params
+  ex: "Hello {0}", ["Bob"] => "Hello Bob"
+  */
   $.each(params,function (i, n) {
     source = source.replace(new RegExp("\\{" + i + "\\}", "g"), n);
   })
@@ -12,30 +18,39 @@ function format(source, params) {
 }
 
 function categoriesScreen() {
+  /*
+  draws the screen with all of the categories
+  */
   for (var i = 0; i < categories.size; i++) {
+    // add each button from the caregories variable
     var categoryButton = '<button class="categoryButton">{0}</button>';
     $("body").append(format(categoryButton,[Array.from(categories)[i]]));
   }
   $(".categoryButton").on('click', function() {
+    // creates sub-screen and back button by filtering entries by clicked category
     var category = this.innerText;
     $(".categoryButton").remove()
     $("body").append(backButton);
     $(".backButton").on('click', function(){
+      // backbutton onclick function, deletes all entries and redraws category screen
       $(".collapsible").remove();
       $(".content").remove();
       $(".backButton").remove();
       categoriesScreen();
     });
     rel_entries = entries.filter(function(entry){
+      // filter out entries based on clicked category
       return entry["Service ID"] == category;
     });
     rel_entries.forEach(function(entry){
       var array = $.map(entry, function(value, index) {
+        // transform object into array for format function
         return [value];
       });
       $("body").append(format(collapsible,array));
     });
     $(".collapsible").on('click', function(){
+      // onclick function for collapsibles, toggles extra information
       this.classList.toggle("active");
       var content = this.nextElementSibling;
       if (content.style.display === 'block') {
