@@ -2,6 +2,7 @@ var i;
 var entries = [];
 var rel_entries = [];
 var categories = new Set();
+var url = "https://docs.google.com/spreadsheets/d/1sPTrQGlMw7bZeuOxK9WZWazfpi-IYKFqSN-62wga3ww/edit?usp=sharing";
 
 function format(source, params) {
   $.each(params,function (i, n) {
@@ -26,10 +27,13 @@ function categoriesScreen() {
       categoriesScreen();
     });
     rel_entries = entries.filter(function(entry){
-      return entry[0] == category;
+      return entry["Service ID"] == category;
     });
     rel_entries.forEach(function(entry){
-      $("body").append(format(collapsible,entry));
+      var array = $.map(entry, function(value, index) {
+        return [value];
+      });
+      $("body").append(format(collapsible,array));
     });
     $(".collapsible").on('click', function(){
       this.classList.toggle("active");
@@ -56,17 +60,43 @@ var collapsible = '<button class="collapsible">{5} - {4}' +
                   '</div>';
 
 var backButton = '<button class="backButton">\<-- Back</button>';
+var dt = new Date(Date.now());
+loadtime = dt + '';
+var tutorial = '<table>' +
+               '  <tr>' +
+               '    <th>Legend</th>' +
+               '  </tr>' +
+               '  <tr>' +
+               '    <td>Language</td>' +
+               '    <td>EN or SP</td>' +
+               '  </tr>' +
+               '  <tr>' +
+               '    <td>Documentation</td>' +
+               '    <td>Required: Y, Not Required: N</td>' +
+               '  </tr>' +
+               '  <tr>' +
+               '    <td>Cost</td>'
+               '    <td>Free: F, Low Cost: Lo, Varies: V</td>' +
+               '  </tr>' +
+               '</table>';
 
-blockspring.runParsed("read-worksheet-google-sheets", { "file_id": "1sPTrQGlMw7bZeuOxK9WZWazfpi-IYKFqSN-62wga3ww", "worksheet_id": "1878156380", "has_header": false}, { "api_key": "br_114955_edcef0380b1584c04100f3882e262d9f9785e92c" }, function(res){
-  console.log(res.params);
-  res.params.data = res.params.data.filter(function(array){
-    return array[0] === "" ? false : true})
-  for (var i = 1; i < res.params.data.length; i++) {
-    var content = res.params.data[i];
-    categories.add(content[0]);
+$("#tutorial").on('click', function() {
+  alert(tutorial)
+});
+
+function init() {
+  Tabletop.init( {key: url, callback: showInfo, simpleSheet: false});
+}
+
+function showInfo(data, tabletop) {
+  alert('Successfully processed!');
+  console.log(data);
+  for (var i = 0; i < data["Detail List"].elements.length; i++) {
+    var content = data["Detail List"].elements[i];
+    categories.add(content["Service ID"]);
     entries.push(content);
   }
   categoriesScreen();
-  
-  
-});
+}
+
+window.addEventListener('DOMContentLoaded', init);
