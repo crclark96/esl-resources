@@ -104,10 +104,9 @@ function init() {
 }
 
 function showInfo(data, tabletop) {
-  alert('Successfully processed!');
   console.log(data);
-  for (var i = 0; i < data["Detail List"].elements.length; i++) {
-    var content = data["Detail List"].elements[i];
+  for (var i = 0; i < data["English Sheet"].elements.length; i++) {
+    var content = data["English Sheet"].elements[i];
     categories.add(content["Service ID"]);
     entries.push(content);
   }
