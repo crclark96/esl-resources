@@ -62,8 +62,10 @@ function categoriesScreen() {
   });
 }
 
-var collapsible = '<button class="collapsible">{5} - {4}' +
+var collapsible = '<button class="collapsible">' + 
+                  '  <div align="left">{4}</div>' +
                   '  <div align="right">{1} {2} {3}</div>' +
+                  '  <div align="left">{5}'
                   '</button>' +
                   '<div class="content">' +
                   '  <p><a href="tel:{6}">{6}</a></p>' +

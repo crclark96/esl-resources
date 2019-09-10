@@ -7,3 +7,5 @@ rm -r dist/ src/
 
 mv esl-resources/* .
 rm -r esl-resources*
+mv dist/* .
+rmdir dist
