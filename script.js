@@ -63,9 +63,9 @@ function categoriesScreen() {
 }
 
 var collapsible = '<button class="collapsible">' + 
-                  '  <div align="left">{4}</div>' +
-                  '  <div align="right">{1} {2} {3}</div>' +
-                  '  <div align="left">{5}'
+                  '  <div style="float: left; width:50%">{4}</div>' +
+                  '  <div style="float: right; width:50%" align="right">{1} {2} {3}</div>' +
+                  '  <div align="left">{5}</div>' +
                   '</button>' +
                   '<div class="content">' +
                   '  <p><a href="tel:{6}">{6}</a></p>' +
