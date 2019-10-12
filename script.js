@@ -104,7 +104,7 @@ $("#tutorial").on('click', function() {
 $("#language").on('click', function() {
   var url = new URL(document.URL);
   var search_params = new URLSearchParams(url.search);
-  if (search_params.has("en")) {
+  if (!search_params.has("en")) {
     url.href += "/?en";
   }
   window.location.href = url;
