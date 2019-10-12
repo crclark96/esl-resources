@@ -62,7 +62,7 @@ function categoriesScreen() {
   });
 }
 
-var collapsible = '<button class="collapsible">' + 
+var collapsible = '<button class="collapsible">' +
                   '  <div style="float: left; width:50%">{4}</div>' +
                   '  <div style="float: right; width:50%" align="right">{1} {2} {3}</div>' +
                   '  <div align="left">{5}</div>' +
@@ -101,14 +101,33 @@ $("#tutorial").on('click', function() {
   alert(tutorial)
 });
 
+$("#language").on('click', function() {
+  var url = new URL(document.URL);
+  var search_params = new URLSearchParams(url.search);
+  if (search_params.has("en")) {
+    url.href += "/?en";
+  }
+  window.location.href = url;
+});
+
+
 function init() {
   Tabletop.init( {key: url, callback: showInfo, simpleSheet: false});
 }
 
 function showInfo(data, tabletop) {
   console.log(data);
-  for (var i = 0; i < data["English Sheet"].elements.length; i++) {
-    var content = data["English Sheet"].elements[i];
+  var url = new URL(document.URL);
+  var search_params = new URLSearchParams(url.search);
+  var sheet;
+  if (search_params.has("en")) {
+    sheet = "English Sheet";
+    $("#language").html("ES");
+  } else {
+    sheet = "Spanish Sheet";
+  }
+  for (var i = 0; i < data[sheet].elements.length; i++) {
+    var content = data[sheet].elements[i];
     categories.add(content["Service ID"]);
     entries.push(content);
   }
