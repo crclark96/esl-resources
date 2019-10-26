@@ -105,7 +105,9 @@ $("#language").on('click', function() {
   var url = new URL(document.URL);
   var search_params = new URLSearchParams(url.search);
   if (!search_params.has("en")) {
-    url.href += "/?en";
+    url.href += "?en";
+  } else {
+    url.href = url.href.slice(0,-3)
   }
   window.location.href = url;
 });
