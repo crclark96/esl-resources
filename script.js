@@ -64,7 +64,9 @@ function categoriesScreen() {
 
 var collapsible = '<button class="collapsible">' +
                   '  <div style="float: left; width:50%">{4}</div>' +
-                  '  <div style="float: right; width:50%" align="right">{1} {2} {3}</div>' +
+                  '  <div style="float: right; width:50%" align="right">{3}' +
+                  '    <i onclick="alert(\'{1} {2}\')" class="fas fa-info-circle"></i>' +
+                  '  </div>' +
                   '  <div align="left">{5}</div>' +
                   '</button>' +
                   '<div class="content">' +
@@ -98,7 +100,7 @@ var tutorial = '<table>' +
                '</table>';
 
 $("#tutorial").on('click', function() {
-  alert(tutorial)
+  alert(tutorial);
 });
 
 $("#language").on('click', function() {
