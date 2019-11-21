@@ -64,8 +64,8 @@ function categoriesScreen() {
 
 var collapsible = '<button class="collapsible">' +
                   '  <div style="float: left; width:50%">{4}</div>' +
-                  '  <div style="float: right; width:50%" align="right">{3}' +
-                  '    <i onclick="alert(\'{1} {2}\')" class="fas fa-info-circle"></i>' +
+                  '  <div style="float: right; width:50%" align="right">{2}' +
+                  '    <i onclick="alert(\'{1} {3}\')" class="fas fa-info-circle"></i>' +
                   '  </div>' +
                   '  <div align="left">{5}</div>' +
                   '</button>' +
@@ -81,27 +81,6 @@ var collapsible = '<button class="collapsible">' +
 var backButton = '<button class="backButton">\<-- Back</button>';
 var dt = new Date(Date.now());
 loadtime = dt + '';
-var tutorial = '<table>' +
-               '  <tr>' +
-               '    <th>Legend</th>' +
-               '  </tr>' +
-               '  <tr>' +
-               '    <td>Language</td>' +
-               '    <td>EN or SP</td>' +
-               '  </tr>' +
-               '  <tr>' +
-               '    <td>Documentation</td>' +
-               '    <td>Required: Y, Not Required: N</td>' +
-               '  </tr>' +
-               '  <tr>' +
-               '    <td>Cost</td>'
-               '    <td>Free: F, Low Cost: Lo, Varies: V</td>' +
-               '  </tr>' +
-               '</table>';
-
-$("#tutorial").on('click', function() {
-  alert(tutorial);
-});
 
 $("#language").on('click', function() {
   var url = new URL(document.URL);
