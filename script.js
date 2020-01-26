@@ -64,8 +64,8 @@ function categoriesScreen() {
 
 var collapsible = '<button class="collapsible">' +
                   '  <div style="float: left; width:50%">{4}</div>' +
-                  '  <div style="float: right; width:50%" align="right">{2}' +
-                  '    <i onclick="alert(\'{1} {3}\')" class="fas fa-info-circle"></i>' +
+                  '  <div style="float: right; width:50%" align="right">{1} {3}' +
+                  '    <i onclick="alert(\'{11} {12} {13} {14}\')" class="fas fa-info-circle"></i>' +
                   '  </div>' +
                   '  <div align="left">{5}</div>' +
                   '</button>' +
@@ -75,7 +75,6 @@ var collapsible = '<button class="collapsible">' +
                   '  <p>{8}</p>' +
                   '  <p>{9}</p>' +
                   '  <p>{10}</p>'+
-                  '  <p>{11}</p>'+
                   '</div>';
 
 var backButton = '<button class="backButton">\<-- Back</button>';
